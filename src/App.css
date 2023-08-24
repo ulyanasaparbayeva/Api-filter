@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  color: #212121;
+  padding-left:100px;
+  font-family: 'Inter',sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+
+.container {
+  margin-top: 40px;
+  padding: 10px 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.products-images {
+  padding-top:30px ;
+  width: 176px;
+  height: 130px;
+  margin: 0px auto;
+  text-align: center;
+  display: flex;
+}
+
+.products-item {
+  padding: 16px;
+}
+
+
+.title-bg {
+  background: rgba(82, 5, 123, 0.10);
+  width: fit-content;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.products-title {
+  color: #52057B;
+  font-family: 'Inter',sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.products-description {
+  padding-top: 8px;
+  color: #212121;
+  font-family: 'Inter',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%
+}
+
+.id-price {
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.products-price {
+  font-family: 'Inter',sans-serif;
+  color: #212121;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.products-id {
+  color: #212121;
+  font-family: 'Inter',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.products-time {
+  padding-top: 14px;
+}
+
+.products-creationAt {
+  color: #828282;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: 'Inter',sans-serif;
+}
+
+/*
+.btn-group {
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  margin-top: 40px;
+}
+
+.btn {
+  border-radius:50px ;
+  padding: 14px 40px;
+  background-color: green;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+
+}
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #475569;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 80%;
+}
+
+
+.modal-background.active {
+  display: flex;
+}
+
+.modal-content i {
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+ font-size: 30px;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-yes {
+  cursor: pointer;
+  background-color: red;
+  border: none;
+  width: 100%;
+  padding: 20px 20px;
+  color: white;
+}
+
+.btn-no {
+  cursor: pointer;
+  background-color: #475569;
+  border: none;
+  width: 100%;
+  padding: 20px 20px;
+  color: white;
+}
+
+ */
