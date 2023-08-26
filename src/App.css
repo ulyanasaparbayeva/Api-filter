@@ -34,6 +34,7 @@ select {
 }
 
 .products-images {
+  object-fit: contain;
   padding-top:30px ;
   width: 176px;
   height: 130px;
