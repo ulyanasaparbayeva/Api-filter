@@ -29,6 +29,10 @@ body {
 }
 
 
+select {
+  margin-left: 100px;
+}
+
 .products-images {
   padding-top:30px ;
   width: 176px;
@@ -61,6 +65,9 @@ body {
 }
 
 .products-description {
+  max-height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-top: 8px;
   color: #212121;
   font-family: 'Inter',sans-serif;

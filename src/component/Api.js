@@ -2,80 +2,52 @@ import {useEffect, useState} from 'react';
 import instance from './api/axios';
 
 const Api = () => {
-  const [allData, setAllData] = useState([]);
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [categoriesResponse, productsResponse] = await Promise.all([
-          instance.get('/categories'),
-          instance.get('/products')
-        ]);
+        const response = await instance.get('products');
+        setProducts(response.data);
+        
+        const uniqueCategories = [...new Set(response.data.map(item => item.category))];
+        setCategories(uniqueCategories);
 
-        console.log('Products Response:', productsResponse.data);
-
-        setCategories(categoriesResponse.data);
-        setAllData(productsResponse.data.data || []);
-        setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error.message || "An error occurred");
-        setLoading(false);
+        console.error("Error fetching products:", error);
       }
     }
+
     fetchData();
   }, []);
 
-
-
-
-  const handleCategoryChange = (event) => {
-    const categoryId = event.target.value;
-
-    if (categoryId) {
-      instance.get(`/products/?categoryId=${categoryId}`)
-        .then(response => {
-          setAllData(response.data.data);
-        })
-        .catch(err => {
-          console.error("Error fetching category specific products:", err);
-          setAllData([]);
-        });
-    } else {
-      instance.get('/products')
-        .then(response => {
-          setAllData(response.data.data);
-        })
-        .catch(err => {
-          console.error("Error fetching all products:", err);
-          setAllData([]);
-        });
-    }
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
+
+  const filteredProducts = selectedCategory === 'all'
+    ? products
+    : products.filter(product => product.category === selectedCategory);
+
+
   return (
-    <>
       <div>
         <div className="title">Today Is Only For You</div>
-        <select onChange={handleCategoryChange} style={{marginLeft:"100px",marginTop:"20px"}}>
-          <option value="">Select category</option>
-          { categories.map(category => (
-            <option key={category.id} value={category.id}>
-              {category.name}
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="all">All Categories</option>
+          {categories.map(category => (
+            <option key={category} value={category}>
+              {category}
             </option>
           ))}
         </select>
-
-        <div className="container">
-          {allData && allData.length > 0 && (
             <div className="container">
-              {allData.map((product, index) => (
+              {filteredProducts.map((product, index) => (
                 <div key={index} className="card" style={{ borderRadius: '8px', overflow: 'hidden' }}>
                   <div style={{ backgroundColor: "#E6E8EC" }}>
-                    {product.images && product.images.length > 0 && <img className="products-images" src={product.images[0]}/>}
+                    <img className="products-images" src={product.image} alt={product.title} />
                   </div>
                   <div className="products-item">
                     <div className="title-bg">
@@ -94,10 +66,7 @@ const Api = () => {
                 </div>
               ))}
             </div>
-          )}
-        </div>
       </div>
-    </>
   )
 }
 
